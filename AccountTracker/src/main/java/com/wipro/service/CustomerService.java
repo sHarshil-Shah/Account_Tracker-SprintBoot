@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import com.wipro.model.Customer;
 import com.wipro.repository.CustomerRepository;
@@ -25,8 +26,8 @@ public class CustomerService {
 	}
 
 //saving a specific record by using the method save() of CrudRepository  
-	public void saveOrUpdate(Customer customer) {
-		customerrepository.save(customer);
+	public Customer saveOrUpdate(Customer customer) {
+		return customerrepository.save(customer);
 	}
 
 //deleting a specific record by using the method deleteById() of CrudRepository  

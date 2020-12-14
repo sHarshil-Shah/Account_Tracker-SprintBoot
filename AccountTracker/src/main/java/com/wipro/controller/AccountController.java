@@ -7,10 +7,11 @@ import com.wipro.repository.AccountRepository;
 import com.wipro.repository.CustomerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -24,9 +25,11 @@ public class AccountController {
 	private CustomerRepository customerRepository;
 
 	@GetMapping("/customers/{customerId}/accounts")
-	public Page<Account> getAllAccountsByCustomerId(@PathVariable(value = "customerId") Long customerId,
+	public List<Account> getAllAccountsByCustomerId(@PathVariable(value = "customerId") Long customerId,
 			Pageable pageable) {
-		return accountRepository.findByCustId(customerId, pageable);
+
+		return accountRepository.findByCustId(customerId, pageable).getContent();
+
 	}
 
 	@PostMapping("/customers/{customerId}/accounts")

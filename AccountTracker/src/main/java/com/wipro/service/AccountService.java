@@ -25,8 +25,8 @@ public class AccountService {
 	}
 
 //saving a specific record by using the method save() of CrudRepository  
-	public void saveOrUpdate(Account account) {
-		accountrepository.save(account);
+	public Account saveOrUpdate(Account account) {
+		return accountrepository.save(account);
 	}
 
 //deleting a specific record by using the method deleteById() of CrudRepository  
